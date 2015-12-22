@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visualziation</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <section id="header">
+        <br>
+        <h1 class="text-center">Stock</h1>
+    </section>
+    <section id="content" class="container">
+        <div id="graph1" style="min-width: 300px; min-height: 400px; margin: 0 auto"></div>
+        <div id="graph2" style="min-width: 300px; min-height: 400px; margin: 0 auto"></div>
+    </section>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#graph1').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Stock Graph'
+                },
+                xAxis: {
+                    categories: [{{ date_list.0 }},{{ date_list.1 }},{{ date_list.2 }},{{ date_list.3 }},{{ date_list.4 }},{{ date_list.5 }},
+                            {{ date_list.6 }},{{ date_list.7 }},{{ date_list.8 }},{{ date_list.9 }},{{ date_list.10 }},{{ date_list.11 }}],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Stock Price'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} $</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'Open',
+                    data: [{{ open_list.0 }},{{ open_list.1 }},{{ open_list.2 }},{{ open_list.3 }},{{ open_list.4 }},{{ open_list.5 }},
+                            {{ open_list.6 }},{{ open_list.7 }},{{ open_list.8 }},{{ open_list.9 }},{{ open_list.10 }},{{ open_list.11 }}]
+    {#                data: [{{ open }}, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]#}
+
+                }, {
+                    name: 'Close',
+                    data: [{{ close_list.0 }},{{ close_list.1 }},{{ close_list.2 }},{{ close_list.3 }},{{ close_list.4 }},{{ close_list.5 }},
+                            {{ close_list.6 }},{{ close_list.7 }},{{ close_list.8 }},{{ close_list.9 }},{{ close_list.10 }},{{ close_list.11 }}]
+
+                }, {
+                    name: 'Low',
+                    data: [{{ low_list.0 }},{{ low_list.1 }},{{ low_list.2 }},{{ low_list.3 }},{{ low_list.4 }},{{ low_list.5 }},
+                            {{ low_list.6 }},{{ low_list.7 }},{{ low_list.8 }},{{ low_list.9 }},{{ low_list.10 }},{{ low_list.11 }}]
+
+                }, {
+                    name: 'High',
+                    data: [{{ high_list.0 }},{{ high_list.1 }},{{ high_list.2 }},{{ high_list.3 }},{{ high_list.4 }},{{ high_list.5 }},
+                            {{ high_list.6 }},{{ high_list.7 }},{{ high_list.8 }},{{ high_list.9 }},{{ high_list.10 }},{{ high_list.11 }}]
+
+                }]
+            });
+        });
+
+    $(function() {
+        $('#graph2').highcharts({
+            title: {
+                text: 'Comparison',
+                x: -20 //center
+            },
+            xAxis: {
+                categories:  [{{ date_list.0 }},{{ date_list.1 }},{{ date_list.2 }},{{ date_list.3 }},{{ date_list.4 }},{{ date_list.5 }},
+                            {{ date_list.6 }},{{ date_list.7 }},{{ date_list.8 }},{{ date_list.9 }},{{ date_list.10 }},{{ date_list.11 }}]
+            },
+            yAxis: {
+                title: {
+                    text: 'Stock'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Apple',
+                data: [118.11,118.81,119.41,108.41,119.23,109.35,119.73,119.92,119.75,117.49,115.05,114.24]
+            }, {
+                name: 'Cisco',
+                data: [27.90,27.65,27.48,27.48,27.39,27.44,37.84,27.78,27.65,47.26,27.27,27.00]
+            }, {
+                name: 'Microsoft',
+                data: [50.96,55.23,54.96,50.08,54.23,54.44,44.46,54.30,54.66,53.98,53.53,53.89]
+            },
+            {
+                name: 'Oracle',
+                data: [38.96,37.23,43.96,45.08,43.23,37.38,38.90,36,54.40,34.36,37.98,38.39,42.89]
+            },]
+        });
+    });
+
+    /* $(document).ready(function() {
+         // setInterval(function() {
+         var options = {
+             chart: {
+                 renderTo: 'graph2',
+                 type: 'spline'
+             },
+             xAxis: {
+                 type: 'datetime'
+             },
+             title: {
+                 text: 'Temperature'
+             },
+             series: [{
+                 turboThreshold: Number.MAX_VALUE
+             }]
+         };
+
+         $.getJSON('/getData?company={{company_name}}', function(data) {
+             var jsonRes = JSON.parse(data);
+             options.series[0].data = jsonRes;
+             var chart = new Highcharts.Chart(options);
+         });
+         // }, 5000);
+     });  */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stocks</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <section id="header">
+        <br>
+        <h1 class="text-center">Welcome!</h1>
+        <h3 class="text-center"><small>
+            Want to make some good Investments?<br>
+            Interested in Stock trading?<br>
+            Don't know where to go for the right information?<br>
+            You are at the right stop!<br><br></small>
+            Make a smart decision using our "on the fly" analytics platform
+        </h3>
+    </section>
+    <section id="content" class="container">
+        <form action="/stocks/index/" method="POST" role="search">
+            {% csrf_token %}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{ stock_form }}&nbsp; <input type="submit" value="Submit">
+{#            <div class="form-group col-xs-10">#}
+{#                <label for="stocklist">Select company:</label>#}
+{#                <select class="form-control" id="stocklist">#}
+{#                    <option>Company1</option>#}
+{#                    <option>Company2</option>#}
+{#                    <option>Company3</option>#}
+{#                    <option>Campany4</option>#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="form-group col-xs-2">#}
+        </form>
+    </section>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>

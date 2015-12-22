@@ -1,0 +1,21 @@
+<html>
+<header>
+    <style type="text/css">
+        h1 {color: rgb(255,0,0)}
+    </style>
+</header>
+<h1> Welcome to RGV book store ! </h1>
+<p>Number of books in the store = {{ count }}</p>
+
+<form method="post" action="index">
+    {% csrf_token %}
+<select>
+    <option selected="selected" disabled>Objects on page:</option>
+    <option value="Apple">Apple</option>
+    <option value="Cisco">Cisco</option>
+    <option value="Juniper">Juniper</option>
+    <option value="Facebook">Facebook</option>
+</select>
+    <input type="submit" value="Submit">
+</form>
+</html>

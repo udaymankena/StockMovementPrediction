@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Analysis</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <style type="text/css">
+    .user {
+        border-right: 1px dashed #333;
+    }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <br>
+        <h1 class="text-center">Analysis</h1>
+    </section>
+    <section id="content" class="container">
+        <hr>
+        <p><strong>Here is our analysis for 'X'</strong></p>
+        <br>
+        <div class="col-xs-6 text-center user">
+            <strong>User Opinion</strong>
+            <p> {{ gen_pos_percent }}% positive</p>
+            <p> {{ gen_neg_percent }}% negative</p>
+        </div>
+        <div class="col-xs-6 text-center expert">
+            <strong>Expert Opinion:</strong>
+            <p>{{ anal_pos_percent }} % positive</p>
+            <p>{{ anal_neg_percent }} % negative</p>
+        </div>
+        <div>
+            <strong>Decision:</strong>
+            <div class="col-xs-offset-1"> <h2> {{ decision }}</h2></div>
+        </div>
+        <br>
+        <a href="http://localhost:8000/stocks/accessform/" class="btn .btn-info" role="button">View the Performance of stock in recent past</a>
+    </section>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
